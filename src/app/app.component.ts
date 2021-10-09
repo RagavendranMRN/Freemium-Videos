@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 })
 export class AppComponent {
   SearchQuery = '';
+  SearchResult = '';
   addFlag = false;
   NewSearch = '';
   NewUrl = '';
@@ -38,22 +39,25 @@ export class AppComponent {
     this.addFlag = false;
   }
   generateUrls() {
-    this.values = [];
-    this.videoList.sort();
-    this.videoList.map((x) => {
-      let imageUrl = x.split('/');
-      let image = 'http://www.google.com/s2/favicons?domain=' + imageUrl[2];
-      const result = imageUrl[2].split('.').filter((word) => {
-        if (word != 'www' && word != 'com') {
-          return name;
-        }
+    if (this.SearchQuery != '') {
+      this.values = [];
+      this.videoList.sort();
+      this.videoList.map((x) => {
+        let imageUrl = x.split('/');
+        let image = 'http://www.google.com/s2/favicons?domain=' + imageUrl[2];
+        const result = imageUrl[2].split('.').filter((word) => {
+          if (word != 'www' && word != 'com') {
+            return name;
+          }
+        });
+        let url = x.replace('$search', this.SearchQuery);
+        this.values.push({
+          url: url,
+          image: image,
+          name: result[0].toUpperCase(),
+        });
       });
-      let url = x.replace('$search', this.SearchQuery);
-      this.values.push({
-        url: url,
-        image: image,
-        name: result[0].toUpperCase(),
-      });
-    });
+      this.SearchResult = this.SearchQuery;
+    }
   }
 }
