@@ -1,0 +1,73 @@
+<h5 class="m-4">Freemium Videos</h5>
+<button
+  tyoe="sumbit"
+  class="form-control"
+  class="btn btn-primary ml-3"
+  (click)="addNewEnable()"
+  *ngIf="!addFlag"
+>
+  <i class="icon-plus"></i>
+</button>
+<div class="m-2" *ngIf="addFlag">
+  <div class="input-group">
+    <input
+      [(ngModel)]="NewUrl"
+      type="text"
+      id="taskData"
+      class="form-control"
+      placeholder="Paste the url"
+      required="required"
+    />
+    <input
+      [(ngModel)]="NewSearch"
+      type="text"
+      id="taskData"
+      class="form-control"
+      placeholder="Type the exact Search key"
+      required="required"
+    />
+    <button
+      tyoe="sumbit"
+      class="form-control"
+      class="btn btn-primary"
+      (click)="addNewVideoUrl()"
+    >
+      <i class="icon-ok-sign"></i>
+    </button>
+  </div>
+</div>
+<div class="m-2">
+  <div class="input-group">
+    <input
+      [(ngModel)]="SearchQuery"
+      type="text"
+      id="taskData"
+      class="form-control"
+      onblur="this.value=''"
+      placeholder="Add task to filter Press Enter to save"
+      required="required"
+    />
+    <button
+      tyoe="sumbit"
+      class="form-control"
+      class="btn btn-primary"
+      (click)="generateUrls()"
+    >
+      <i class="icon-ok-sign"></i>
+    </button>
+  </div>
+</div>
+<div class="mt-5">
+  <div *ngFor="let t of values">
+    <div class="card ml-3 mr-3 m-3">
+      <div class="m-0">
+        <div class="input-group">
+          <a class="m-1 form-control border border-white" href="{{ t.url }}">{{
+            t.name
+          }}</a>
+          <img class="m-3" width="20px" height="20px" src="{{ t.image }}" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

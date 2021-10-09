@@ -1,0 +1,4 @@
+    'https://pixabay.com/videos/search/$search/',
+    'https://www.pexels.com/search/videos/$search/',
+    'https://dareful.com/?s=$search',
+    'https://www.youtube.com/results?search_query=$search&sp=EgIwAQ%253D%253D',
